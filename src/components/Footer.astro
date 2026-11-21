@@ -1,0 +1,24 @@
+---
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+---
+
+<footer class="border-t-2 border-ink bg-ink text-paper">
+  <div class="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-8 px-4 py-10 sm:px-6 lg:px-8">
+    <div>
+      <p class="font-display text-2xl uppercase leading-none tracking-[-0.02em]">PT. Dysquel<br />Maju Sejahtera</p>
+      <p class="mt-4 max-w-md text-sm leading-[1.7] text-paper/70">{t.footer.tagline}</p>
+    </div>
+    <div class="font-mono text-[11px] uppercase tracking-[0.08em] text-paper/70">
+      <p>© {new Date().getFullYear()} PT. Dysquel Maju Sejahtera. {t.footer.rights}</p>
+      <p class="mt-2">{t.footer.source}</p>
+    </div>
+  </div>
+</footer>

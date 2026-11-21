@@ -1,0 +1,111 @@
+---
+import { sales, site } from '../data/site';
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+const primaryEmail = site.emails[0];
+---
+
+<section id="contact" class="bg-paper">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+        {t.contact.overline}
+      </p>
+      <h2 class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
+        {t.contact.title}
+      </h2>
+      <p class="mt-4 max-w-2xl text-base leading-[1.7] text-muted">{t.contact.lead}</p>
+    </div>
+
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+      <div>
+        <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+          {t.contact.addressLabel}
+        </h3>
+        <address class="mt-3 not-italic leading-[1.7]">
+          {site.address.map((line) => <span class="block">{line}</span>)}
+        </address>
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div>
+            <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+              {t.contact.emailLabel}
+            </h3>
+            <ul class="mt-3 space-y-1 text-sm">
+              {
+                site.emails.map((email) => (
+                  <li>
+                    <a href={`mailto:${email}`} class="break-all underline decoration-line underline-offset-4 hover:decoration-accent">
+                      {email}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+              {t.contact.phoneLabel} / {t.contact.faxLabel}
+            </h3>
+            <p class="mt-3 text-sm">
+              <a href={`tel:${site.phone.href}`} class="underline decoration-line underline-offset-4 hover:decoration-accent">
+                {site.phone.label}
+              </a>
+            </p>
+            <p class="text-sm text-muted">{site.fax.label}</p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href={`mailto:${primaryEmail}`}
+            class="border-2 border-ink bg-ink px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-paper no-underline transition-colors hover:border-accent hover:bg-accent"
+          >
+            {t.contact.emailCta}
+          </a>
+          <a
+            href={`tel:${site.phone.href}`}
+            class="border-2 border-ink bg-paper px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-ink no-underline transition-colors hover:bg-ink hover:text-paper"
+          >
+            {t.contact.callCta}
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+          {t.contact.salesLabel}
+        </h3>
+        <ul class="mt-3 border-t-2 border-ink">
+          {
+            sales.map((person) => (
+              <li class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-line py-4">
+                <span class="font-display text-lg uppercase">{person.name}</span>
+                <span class="flex items-center gap-4 font-mono text-xs">
+                  <a href={`tel:${person.phone}`} class="no-underline hover:text-accent">
+                    {person.phone}
+                  </a>
+                  <a
+                    href={`https://wa.me/${person.wa}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border-2 border-ink px-2 py-1 no-underline transition-colors hover:bg-ink hover:text-paper"
+                  >
+                    {t.contact.waCta}
+                  </a>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { clients } from '../data/site';
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+---
+
+<section id="clients" class="border-b-2 border-ink bg-paper">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+        {t.clients.overline}
+      </p>
+      <h2 class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
+        {t.clients.title}
+      </h2>
+      <p class="mt-4 max-w-2xl text-base leading-[1.7] text-muted">{t.clients.lead}</p>
+    </div>
+
+    <ol class="grid gap-x-12 sm:grid-cols-2">
+      {
+        clients.map((client, index) => (
+          <li class="flex items-baseline gap-4 border-b border-line py-3 text-sm transition-colors hover:bg-surface">
+            <span class="font-mono text-[11px] text-muted">{String(index + 1).padStart(2, '0')}</span>
+            <span>{client}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

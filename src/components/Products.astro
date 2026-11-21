@@ -1,0 +1,47 @@
+---
+import { brands } from '../data/site';
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+---
+
+<section id="products" class="border-b-2 border-ink bg-surface">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mb-12 flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+          {t.products.overline}
+        </p>
+        <h2 class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
+          {t.products.title}
+        </h2>
+      </div>
+      <p class="max-w-md border-l-4 border-accent pl-4 text-sm leading-[1.7] text-muted">
+        {t.products.lead}
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      {
+        brands.map((brand) => (
+          <li class="flex min-h-32 items-center justify-center border-2 border-line bg-paper p-6 transition-colors hover:border-ink">
+            <img
+              src={brand.image}
+              alt={brand.name}
+              class="max-h-16 w-full object-contain grayscale"
+              loading="lazy"
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-8 font-mono text-xs uppercase tracking-[0.08em] text-muted">{t.products.note}</p>
+  </div>
+</section>

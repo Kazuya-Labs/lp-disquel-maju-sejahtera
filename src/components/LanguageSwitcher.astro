@@ -1,0 +1,39 @@
+---
+import type { Locale } from '../i18n/translations';
+import { getTranslation, localePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+const options: { code: Locale; label: string }[] = [
+  { code: 'id', label: t.switcher.id },
+  { code: 'en', label: t.switcher.en },
+  { code: 'zh', label: t.switcher.zh },
+];
+---
+
+<div class="flex items-center gap-3">
+  <span class="hidden font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-muted sm:inline">
+    {t.switcher.label}
+  </span>
+  <div class="flex border-2 border-ink" role="group" aria-label={t.switcher.label}>
+    {
+      options.map((option) => (
+        <a
+          href={localePath(option.code)}
+          hreflang={option.code === 'zh' ? 'zh-CN' : option.code}
+          aria-current={option.code === locale ? 'page' : undefined}
+          class:list={[
+            'px-3 py-1.5 font-mono text-xs font-bold uppercase transition-colors hover:bg-accent hover:text-paper',
+            option.code === locale ? 'bg-ink text-paper' : 'bg-paper text-ink',
+          ]}
+        >
+          {option.label}
+        </a>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,58 @@
+---
+import { site } from '../data/site';
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+---
+
+<section id="top" class="border-b-2 border-ink bg-paper">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+    <div>
+      <p class="flex items-center font-mono text-[11px] font-bold uppercase tracking-[0.12em]">
+        <span class="mr-3 inline-block h-[3px] w-10 bg-accent" aria-hidden="true"></span>
+        {t.hero.overline}
+      </p>
+
+      <h1 class="mt-6 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[1.05] tracking-[-0.03em]">
+        {t.hero.titleTop}<br />{t.hero.titleBottom}
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-base leading-[1.7] text-muted sm:text-lg">{t.hero.lead}</p>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href="#products"
+          class="border-2 border-ink bg-ink px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-paper no-underline transition-colors hover:border-accent hover:bg-accent"
+        >
+          {t.hero.primary}
+        </a>
+        <a
+          href="#contact"
+          class="border-2 border-ink bg-paper px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-ink no-underline transition-colors hover:bg-ink hover:text-paper"
+        >
+          {t.hero.secondary}
+        </a>
+      </div>
+
+      <p class="mt-8 font-mono text-xs uppercase tracking-[0.08em] text-muted">{t.hero.note}</p>
+    </div>
+
+    <figure class="border-2 border-ink">
+      <img
+        src={site.heroImage}
+        alt={t.hero.overline}
+        class="aspect-[3/2] w-full object-cover grayscale"
+        loading="eager"
+      />
+      <figcaption class="border-t-2 border-ink bg-ink px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-paper">
+        Est. 2011 — Indonesia
+      </figcaption>
+    </figure>
+  </div>
+</section>

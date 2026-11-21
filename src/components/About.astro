@@ -1,0 +1,73 @@
+---
+import { site } from '../data/site';
+import type { Locale } from '../i18n/translations';
+import { getTranslation } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslation(locale);
+---
+
+<section id="about" class="border-b-2 border-ink bg-paper">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+        {t.about.overline}
+      </p>
+      <h2 class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
+        {t.about.title}
+      </h2>
+    </div>
+
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <p class="text-lg leading-[1.7]">{t.about.lead}</p>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          <article class="border-2 border-line bg-surface p-6 transition-colors hover:border-ink">
+            <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
+              {t.about.visionLabel}
+            </h3>
+            <p class="mt-3 text-sm leading-[1.7]">{t.about.vision}</p>
+          </article>
+          <article class="border-2 border-line bg-surface p-6 transition-colors hover:border-ink">
+            <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
+              {t.about.missionLabel}
+            </h3>
+            <p class="mt-3 text-sm leading-[1.7]">{t.about.mission}</p>
+          </article>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+            {t.about.suppliesLabel}
+          </h3>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <span class="border-2 border-ink px-4 py-2 font-mono text-xs uppercase">
+              {t.about.electrical}
+            </span>
+            <span class="border-2 border-ink px-4 py-2 font-mono text-xs uppercase">
+              {t.about.mechanical}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        {
+          site.aboutImages.map((src) => (
+            <img
+              src={src}
+              alt=""
+              class="h-40 w-full border-2 border-ink object-cover grayscale sm:h-48"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

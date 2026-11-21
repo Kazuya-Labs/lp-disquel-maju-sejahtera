@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-accent: #ef4444;
+  --color-paper: #fafafa;
+  --color-surface: #f5f5f5;
+  --color-muted: #525252;
+  --color-line: #d4d4d4;
+
+  --font-display: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+  --font-sans: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', Consolas, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  .bg-ink :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+}
