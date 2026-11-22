@@ -2,6 +2,7 @@
 - Astro 7 landing page for PT Dysquel Maju Sejahtera. Bun is the package manager (`bun.lock`); use `bun install`, `bun run dev|build|preview`, `bun astro ...`. Requires Node >= 22.23.4 (`package.json` engines).
 - Tailwind v4 is enabled only through `@tailwindcss/vite` in `astro.config.mjs`; there is no `tailwind.config.*`. `src/styles/global.css` is imported by `src/layouts/Layout.astro` and defines the VoiceBox design tokens via `@theme`.
 - i18n: `id` (default, at `/`), `en` (`/en/`), `zh` (`/zh/`). Localized entry pages are `src/pages/index.astro`, `src/pages/en/index.astro`, `src/pages/zh/index.astro`; all share `src/components/LandingPage.astro`. Copy lives in `src/i18n/translations.ts`, company data in `src/data/site.ts`.
+- Product photos come from four hidden Wix category pages (`/power-supply`, `/industrial-parts`, `/pneumatic`, `/igbt-module`), stored under `public/images/products/` and modeled as `productCategories` in `src/data/site.ts`. The official site has no product names, specs, or prices — only images and category labels.
 - No lint/test/typecheck scripts exist. `bun astro check` requires `@astrojs/check` and `typescript`, which are not installed; use `bun run build` as the verification step.
 
 ## CLI
