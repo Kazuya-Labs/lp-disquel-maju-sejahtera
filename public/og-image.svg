@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="og-title og-desc">
+  <title id="og-title">PT. Dysquel Maju Sejahtera — Electrical &amp; Mechanical Supplier</title>
+  <desc id="og-desc">Open Graph image template, 1200 x 630 px, VoiceBox editorial style.</desc>
+
+  <rect width="1200" height="630" fill="#fafafa" />
+  <rect x="36" y="36" width="1128" height="558" fill="none" stroke="#0a0a0a" stroke-width="3" />
+
+  <rect x="80" y="84" width="88" height="6" fill="#ef4444" />
+  <text x="184" y="99" font-family="Space Mono, monospace" font-size="17" font-weight="700" letter-spacing="2" fill="#525252">EST. 2011 — INDONESIA</text>
+  <text x="1120" y="99" text-anchor="end" font-family="Space Mono, monospace" font-size="15" letter-spacing="1" fill="#525252">PT. DYSQUEL MAJU SEJAHTERA</text>
+
+  <text id="headline-1" x="80" y="252" font-family="Archivo Black, sans-serif" font-size="84" letter-spacing="-2" fill="#0a0a0a">DYSQUEL MAJU</text>
+  <text id="headline-2" x="80" y="356" font-family="Archivo Black, sans-serif" font-size="104" letter-spacing="-3" fill="#0a0a0a">SEJAHTERA</text>
+
+  <rect x="80" y="398" width="1040" height="3" fill="#0a0a0a" />
+  <rect x="80" y="398" width="200" height="3" fill="#ef4444" />
+
+  <text id="subtitle" x="80" y="452" font-family="Space Mono, monospace" font-size="24" letter-spacing="1.5" fill="#0a0a0a">ELECTRICAL &amp; MECHANICAL SUPPLIER</text>
+
+  <text x="1120" y="554" text-anchor="end" font-family="Space Mono, monospace" font-size="16" letter-spacing="1" fill="#ef4444">01 / 01</text>
+</svg>
