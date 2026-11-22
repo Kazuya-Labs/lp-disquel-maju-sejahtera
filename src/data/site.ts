@@ -1,4 +1,5 @@
 export const site = {
+  siteUrl: "https://disquel-maju-sejahtera.vercell.app",
   logo: "/images/logo.png",
   heroImage: "/images/hero.jpg",
   aboutImages: [

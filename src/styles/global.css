@@ -43,3 +43,11 @@
     scroll-margin-top: 6rem;
   }
 }
+
+/* Mobile & touch: hover tidak relevan, tampilkan warna asli gambar. */
+@media (hover: none), (pointer: coarse), (max-width: 639px) {
+  .grayscale,
+  .grayscale:hover {
+    filter: none;
+  }
+}
