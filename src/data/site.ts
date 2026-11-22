@@ -1,5 +1,5 @@
 export const site = {
-  siteUrl: "https://disquel-maju-sejahtera.vercell.app",
+  siteUrl: "https://disquel-maju-sejahtera.vercel.app",
   logo: "/images/logo.png",
   heroImage: "/images/hero.jpg",
   aboutImages: [
