@@ -98,11 +98,11 @@ export const sales = [
 ];
 
 export type ClientSector =
-  | 'textile'
-  | 'food-beverage'
-  | 'paper'
-  | 'hospitality'
-  | 'other';
+  | "textile"
+  | "food-beverage"
+  | "paper"
+  | "hospitality"
+  | "other";
 
 export type Client = {
   name: string;
@@ -113,41 +113,88 @@ export type Client = {
 };
 
 export const clients: Client[] = [
-  { name: 'PT. Indorama Synthetics Tbk', location: 'Jakarta', sector: 'textile', featured: true },
-  { name: 'PT. Indorama Polychem Indonesia', location: 'Jakarta', sector: 'other' },
-  { name: 'PT. Mutu Gading Tekstil', location: 'Solo', sector: 'textile', featured: true },
-  { name: 'PT. Multikimia Intipelangi', location: 'Cikarang', sector: 'other' },
-  { name: 'Merlynn Park Hotel', location: 'Jakarta', sector: 'hospitality', featured: true },
-  { name: 'PT. Sunrise Bumi Tekstil', location: 'Bekasi', sector: 'textile', featured: true },
-  { name: 'Manhattan Hotel', location: 'Kuningan, Jakarta', sector: 'hospitality', featured: true },
-  { name: 'PT. Hamparan Mega Jaya', location: 'Tangerang', sector: 'other' },
-  { name: 'PT. Natura Bina Mitra', location: 'Jakarta', sector: 'other' },
-  { name: 'PT. Indorama Petrochemicals', location: 'Cilegon', sector: 'other' },
-  { name: 'PT. Dharma Eka Perkakas', location: 'Jakarta', sector: 'other' },
-  { name: 'PT. Elektrindodaya Pakarnusa', location: 'Bandung', sector: 'other' },
-  { name: 'PT. The Master Steel (3) Mfg', location: 'Pulo Gadung', sector: 'other' },
-  { name: 'PT. Harmoni Mitra Sukses', location: 'Jakarta', sector: 'other' },
   {
-    name: 'PT. Nestle Indofood Citra Rasa Indonesia',
-    location: 'Karawang',
-    sector: 'food-beverage',
+    name: "PT. Indorama Synthetics Tbk",
+    location: "Jakarta",
+    sector: "textile",
+    logo: "/images/clients/indorama-syntetic.png",
     featured: true,
   },
-  { name: 'ABE Electrical', location: 'Banda Aceh', sector: 'other' },
   {
-    name: 'PT. Propan Raya',
-    location: 'Curug, Tangerang',
-    sector: 'other',
+    name: "PT. Indorama Polychem Indonesia",
+    location: "Jakarta",
+    sector: "other",
+  },
+  {
+    name: "PT. Mutu Gading Tekstil",
+    location: "Solo",
+    sector: "textile",
+    logo: "/images/clients/mutu-gading-tekstil.png",
     featured: true,
   },
-  { name: 'CV. Bintang Surya Tehnik', location: 'Tangerang', sector: 'other' },
+  { name: "PT. Multikimia Intipelangi", location: "Cikarang", sector: "other" },
   {
-    name: 'PT. Indah Kiat Pulp & Paper Tbk',
-    location: 'Cilegon',
-    sector: 'paper',
+    name: "Merlynn Park Hotel",
+    location: "Jakarta",
+    sector: "hospitality",
+
+    logo: "/images/clients/merlin-park-hotel.png",
     featured: true,
   },
-  { name: 'B Hotel', location: 'Bali', sector: 'hospitality' },
+  {
+    name: "PT. Sunrise Bumi Tekstil",
+    location: "Bekasi",
+    sector: "textile",
+    logo: "/images/clients/sunrise-bumi-textil.jpeg",
+    featured: true,
+  },
+  {
+    name: "Manhattan Hotel",
+    location: "Kuningan, Jakarta",
+    sector: "hospitality",
+    logo: "/images/clients/manhattan-hotel.jpg",
+    featured: true,
+  },
+  { name: "PT. Hamparan Mega Jaya", location: "Tangerang", sector: "other" },
+  { name: "PT. Natura Bina Mitra", location: "Jakarta", sector: "other" },
+  { name: "PT. Indorama Petrochemicals", location: "Cilegon", sector: "other" },
+  { name: "PT. Dharma Eka Perkakas", location: "Jakarta", sector: "other" },
+  {
+    name: "PT. Elektrindodaya Pakarnusa",
+    location: "Bandung",
+    sector: "other",
+  },
+  {
+    name: "PT. The Master Steel (3) Mfg",
+    location: "Pulo Gadung",
+    sector: "other",
+  },
+  { name: "PT. Harmoni Mitra Sukses", location: "Jakarta", sector: "other" },
+  {
+    name: "PT. Nestle Indofood Citra Rasa Indonesia",
+    location: "Karawang",
+    sector: "food-beverage",
+
+    logo: "/images/clients/nestle.png",
+    featured: true,
+  },
+  { name: "ABE Electrical", location: "Banda Aceh", sector: "other" },
+  {
+    name: "PT. Propan Raya",
+    location: "Curug, Tangerang",
+    sector: "other",
+    logo: "/images/clients/propan.jpg",
+    featured: true,
+  },
+  { name: "CV. Bintang Surya Tehnik", location: "Tangerang", sector: "other" },
+  {
+    name: "PT. Indah Kiat Pulp & Paper Tbk",
+    location: "Cilegon",
+    sector: "paper",
+    logo: "/images/clients/indah-kilat-paper.webp",
+    featured: true,
+  },
+  { name: "B Hotel", location: "Bali", sector: "hospitality" },
 ];
 
 export type ProductCategoryId =
