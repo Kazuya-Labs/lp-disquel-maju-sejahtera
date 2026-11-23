@@ -1,0 +1,29 @@
+---
+import type { Client } from '../data/site';
+
+interface Props {
+  items: Client[];
+}
+
+const { items } = Astro.props;
+const number = (value: number) => String(value).padStart(2, '0');
+---
+
+<ul class="border-t-2 border-ink">
+  {
+    items.map((client, index) => (
+      <li class="group grid gap-1 border-b-2 border-line py-4 transition-colors hover:bg-ink hover:text-paper sm:flex sm:items-center sm:justify-between sm:gap-4">
+        <span class="flex items-baseline gap-4">
+          <span class="font-mono text-[11px] text-muted group-hover:text-paper/60">
+            {number(index + 1)}
+          </span>
+          <span class="text-sm font-medium">{client.name}</span>
+        </span>
+        <span class="flex items-center gap-4 pl-[2.1rem] font-mono text-[11px] uppercase tracking-[0.08em] text-muted group-hover:text-paper/60 sm:pl-0">
+          {client.location}
+          <span class="group-hover:text-accent" aria-hidden="true">↗</span>
+        </span>
+      </li>
+    ))
+  }
+</ul>

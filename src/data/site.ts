@@ -97,27 +97,57 @@ export const sales = [
   { name: "Franky", phone: "081380932632", wa: "6281380932632" },
 ];
 
-export const clients = [
-  "PT. Indorama Synthetics Tbk — Jakarta",
-  "PT. Indorama Polychem Indonesia — Jakarta",
-  "PT. Mutu Gading Tekstil — Solo",
-  "PT. Multikimia Intipelangi — Cikarang",
-  "Merlynn Park Hotel — Jakarta",
-  "PT. Sunrise Bumi Tekstil — Bekasi",
-  "Manhattan Hotel — Kuningan, Jakarta",
-  "PT. Hamparan Mega Jaya — Tangerang",
-  "PT. Natura Bina Mitra — Jakarta",
-  "PT. Indorama Petrochemicals — Cilegon",
-  "PT. Dharma Eka Perkakas — Jakarta",
-  "PT. Elektrindodaya Pakarnusa — Bandung",
-  "PT. The Master Steel (3) Mfg — Pulo Gadung",
-  "PT. Harmoni Mitra Sukses — Jakarta",
-  "PT. Nestle Indofood Citra Rasa Indonesia — Karawang",
-  "ABE Electrical — Banda Aceh",
-  "PT. Propan Raya — Curug, Tangerang",
-  "CV. Bintang Surya Tehnik — Tangerang",
-  "PT. Indah Kiat Pulp & Paper Tbk — Cilegon",
-  "B Hotel — Bali",
+export type ClientSector =
+  | 'textile'
+  | 'food-beverage'
+  | 'paper'
+  | 'hospitality'
+  | 'other';
+
+export type Client = {
+  name: string;
+  location: string;
+  sector: ClientSector;
+  featured?: boolean;
+  logo?: string;
+};
+
+export const clients: Client[] = [
+  { name: 'PT. Indorama Synthetics Tbk', location: 'Jakarta', sector: 'textile', featured: true },
+  { name: 'PT. Indorama Polychem Indonesia', location: 'Jakarta', sector: 'other' },
+  { name: 'PT. Mutu Gading Tekstil', location: 'Solo', sector: 'textile', featured: true },
+  { name: 'PT. Multikimia Intipelangi', location: 'Cikarang', sector: 'other' },
+  { name: 'Merlynn Park Hotel', location: 'Jakarta', sector: 'hospitality', featured: true },
+  { name: 'PT. Sunrise Bumi Tekstil', location: 'Bekasi', sector: 'textile', featured: true },
+  { name: 'Manhattan Hotel', location: 'Kuningan, Jakarta', sector: 'hospitality', featured: true },
+  { name: 'PT. Hamparan Mega Jaya', location: 'Tangerang', sector: 'other' },
+  { name: 'PT. Natura Bina Mitra', location: 'Jakarta', sector: 'other' },
+  { name: 'PT. Indorama Petrochemicals', location: 'Cilegon', sector: 'other' },
+  { name: 'PT. Dharma Eka Perkakas', location: 'Jakarta', sector: 'other' },
+  { name: 'PT. Elektrindodaya Pakarnusa', location: 'Bandung', sector: 'other' },
+  { name: 'PT. The Master Steel (3) Mfg', location: 'Pulo Gadung', sector: 'other' },
+  { name: 'PT. Harmoni Mitra Sukses', location: 'Jakarta', sector: 'other' },
+  {
+    name: 'PT. Nestle Indofood Citra Rasa Indonesia',
+    location: 'Karawang',
+    sector: 'food-beverage',
+    featured: true,
+  },
+  { name: 'ABE Electrical', location: 'Banda Aceh', sector: 'other' },
+  {
+    name: 'PT. Propan Raya',
+    location: 'Curug, Tangerang',
+    sector: 'other',
+    featured: true,
+  },
+  { name: 'CV. Bintang Surya Tehnik', location: 'Tangerang', sector: 'other' },
+  {
+    name: 'PT. Indah Kiat Pulp & Paper Tbk',
+    location: 'Cilegon',
+    sector: 'paper',
+    featured: true,
+  },
+  { name: 'B Hotel', location: 'Bali', sector: 'hospitality' },
 ];
 
 export type ProductCategoryId =

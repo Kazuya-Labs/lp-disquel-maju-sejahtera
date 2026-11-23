@@ -81,6 +81,16 @@ export const copy = {
     title: "On the floor, every day.",
     lead:
       "From textile plants to hotels, our customers span industries across Indonesia. Some have been with us since the beginning.",
+    featured: "Featured",
+    tabs: {
+      textile: "Textile",
+      foodBeverage: "Food & Beverage",
+      paper: "Paper",
+      hospitality: "Hospitality",
+    },
+    viewAll: "View All Clients",
+    hideAll: "Hide All Clients",
+    clientCount: "clients",
   },
   contact: {
     overline: "04 / Contact",
