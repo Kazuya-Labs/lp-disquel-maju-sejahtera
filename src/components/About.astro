@@ -1,72 +1,87 @@
 ---
+import { copy } from '../data/copy';
 import { site } from '../data/site';
-import type { Locale } from '../i18n/translations';
-import { getTranslation } from '../i18n/utils';
-
-interface Props {
-  locale: Locale;
-}
-
-const { locale } = Astro.props;
-const t = getTranslation(locale);
 ---
 
 <section id="about" class="border-b-2 border-ink bg-paper">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-    <div class="mb-12">
-      <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-        {t.about.overline}
-      </p>
-      <h2 class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
-        {t.about.title}
-      </h2>
-    </div>
+    <div class="grid gap-10 lg:grid-cols-[0.3fr_0.7fr] lg:gap-16">
+      <div class="reveal" data-reveal>
+        <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+          {copy.about.overline}
+        </p>
+        <span class="mt-6 block font-display text-[clamp(5rem,14vw,10rem)] leading-[0.8] text-line" aria-hidden="true">
+          01
+        </span>
+      </div>
 
-    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
-        <p class="text-lg leading-[1.7]">{t.about.lead}</p>
+      <div class="reveal" data-reveal>
+        <h2 class="font-display text-[clamp(2.25rem,6vw,4.5rem)] uppercase leading-[1] tracking-[-0.03em]">
+          {copy.about.title}
+        </h2>
+
+        <blockquote class="mt-8 border-l-4 border-accent pl-6 text-xl italic leading-[1.6]">
+          “{copy.about.quote}”
+        </blockquote>
+
+        <p class="mt-8 max-w-2xl text-base leading-[1.7] text-muted sm:text-lg">
+          {copy.about.lead}
+        </p>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
           <article class="border-2 border-line bg-surface p-6 transition-colors hover:border-ink">
             <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
-              {t.about.visionLabel}
+              {copy.about.visionLabel}
             </h3>
-            <p class="mt-3 text-sm leading-[1.7]">{t.about.vision}</p>
+            <p class="mt-3 text-sm leading-[1.7]">{copy.about.vision}</p>
           </article>
           <article class="border-2 border-line bg-surface p-6 transition-colors hover:border-ink">
             <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
-              {t.about.missionLabel}
+              {copy.about.missionLabel}
             </h3>
-            <p class="mt-3 text-sm leading-[1.7]">{t.about.mission}</p>
+            <p class="mt-3 text-sm leading-[1.7]">{copy.about.mission}</p>
           </article>
         </div>
 
         <div class="mt-8">
           <h3 class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-            {t.about.suppliesLabel}
+            {copy.about.suppliesLabel}
           </h3>
           <div class="mt-3 flex flex-wrap gap-3">
             <span class="border-2 border-ink px-4 py-2 font-mono text-xs uppercase">
-              {t.about.electrical}
+              {copy.about.electrical}
             </span>
             <span class="border-2 border-ink px-4 py-2 font-mono text-xs uppercase">
-              {t.about.mechanical}
+              {copy.about.mechanical}
             </span>
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="mt-14 grid gap-3 lg:grid-cols-[1.3fr_1fr]" data-reveal>
+      <img
+        src={site.aboutImages[0]}
+        alt=""
+        class="h-72 w-full border-2 border-ink object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 lg:h-[34rem]"
+        loading="lazy"
+      />
       <div class="grid grid-cols-2 gap-3">
         {
-          site.aboutImages.map((src) => (
+          site.aboutImages.slice(1).map((src) => (
             <img
               src={src}
               alt=""
-              class="h-40 w-full border-2 border-ink object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 sm:h-48"
+              class="h-36 w-full border-2 border-ink object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 lg:h-[16.4rem]"
               loading="lazy"
             />
           ))
         }
+        <div class="flex flex-col justify-between border-2 border-ink bg-ink p-5 font-mono text-[11px] uppercase tracking-[0.12em] text-paper">
+          <span>Field notes</span>
+          <span class="text-paper/60">{copy.about.stamp}</span>
+          <span class="text-xl" aria-hidden="true">↗</span>
+        </div>
       </div>
     </div>
   </div>

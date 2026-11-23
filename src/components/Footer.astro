@@ -1,23 +1,28 @@
 ---
-import type { Locale } from '../i18n/translations';
-import { getTranslation } from '../i18n/utils';
-
-interface Props {
-  locale: Locale;
-}
-
-const { locale } = Astro.props;
-const t = getTranslation(locale);
+import { copy } from '../data/copy';
+import { site } from '../data/site';
 ---
 
 <footer class="border-t-2 border-ink bg-ink text-paper">
-  <div class="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-8 px-4 py-10 sm:px-6 lg:px-8">
-    <div>
-      <p class="font-display text-2xl uppercase leading-none tracking-[-0.02em]">PT. Dysquel<br />Maju Sejahtera</p>
-      <p class="mt-4 max-w-md text-sm leading-[1.7] text-paper/70">{t.footer.tagline}</p>
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <p class="font-display text-[clamp(2.5rem,9vw,6rem)] uppercase leading-[0.88] tracking-[-0.045em]">
+      Dysquel<br />Maju Sejahtera
+    </p>
+
+    <div class="mt-12 grid gap-8 border-t-2 border-paper/30 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+      <p class="max-w-md text-sm leading-[1.7] text-paper/70">{copy.footer.tagline}</p>
+      <div class="font-mono text-[11px] uppercase leading-[1.8] tracking-[0.08em] text-paper/70">
+        <p>{site.address[0]}</p>
+        <p>{site.address[2]}</p>
+      </div>
+      <div class="font-mono text-[11px] uppercase leading-[1.8] tracking-[0.08em] text-paper/70 sm:text-right">
+        <p>{site.emails[0]}</p>
+        <p>{site.phone.label}</p>
+      </div>
     </div>
-    <div class="font-mono text-[11px] uppercase tracking-[0.08em] text-paper/70">
-      <p>© {new Date().getFullYear()} PT. Dysquel Maju Sejahtera. {t.footer.rights}</p>
-    </div>
+
+    <p class="mt-10 font-mono text-[11px] uppercase tracking-[0.08em] text-paper/50">
+      © {new Date().getFullYear()} PT. Dysquel Maju Sejahtera. {copy.footer.rights}
+    </p>
   </div>
 </footer>

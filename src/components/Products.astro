@@ -4,24 +4,16 @@ import {
   productCategories,
   type ProductCategoryId,
 } from '../data/site';
-import type { Locale } from '../i18n/translations';
-import { getTranslation } from '../i18n/utils';
-
-interface Props {
-  locale: Locale;
-}
-
-const { locale } = Astro.props;
-const t = getTranslation(locale);
+import { copy } from '../data/copy';
 
 const categoryCopy: Record<
   ProductCategoryId,
   { title: string; description: string }
 > = {
-  'power-supply': t.catalog.powerSupply,
-  'industrial-parts': t.catalog.industrialParts,
-  pneumatic: t.catalog.pneumatic,
-  'igbt-module': t.catalog.igbtModule,
+  'power-supply': copy.catalog.powerSupply,
+  'industrial-parts': copy.catalog.industrialParts,
+  pneumatic: copy.catalog.pneumatic,
+  'igbt-module': copy.catalog.igbtModule,
 };
 
 const categories = productCategories.map((category) => ({
@@ -30,33 +22,38 @@ const categories = productCategories.map((category) => ({
     category.relatedBrands?.includes(brand.name),
   ),
 }));
+
+const number = (value: number) => String(value).padStart(2, '0');
 ---
 
 <section id="products" class="border-b-2 border-ink bg-surface">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <section id="brands" aria-labelledby="brands-title">
       <div class="mb-10 flex flex-wrap items-end justify-between gap-6 sm:mb-12">
-        <div>
+        <div class="reveal" data-reveal>
           <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-            {t.products.overline}
+            {copy.products.overline}
           </p>
-          <h2 id="brands-title" class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
-            {t.products.title}
+          <h2 id="brands-title" class="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] uppercase leading-none tracking-[-0.03em]">
+            {copy.products.title}
           </h2>
         </div>
         <p class="max-w-md border-l-4 border-accent pl-4 text-sm leading-[1.7] text-muted">
-          {t.products.lead}
+          {copy.products.lead}
         </p>
       </div>
 
       <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {
-          brands.map((brand) => (
-            <li class="flex min-h-32 items-center justify-center border-2 border-line bg-paper p-6 transition-colors hover:border-ink">
+          brands.map((brand, index) => (
+            <li class="group relative flex min-h-32 items-center justify-center border-2 border-line bg-paper p-6 transition-colors hover:border-ink">
+              <span class="absolute left-3 top-3 font-mono text-[10px] text-muted group-hover:text-accent">
+                {number(index + 1)}
+              </span>
               <img
                 src={brand.image}
                 alt={brand.name}
-                class="max-h-16 w-full object-contain grayscale transition-[filter] duration-200 hover:grayscale-0"
+                class="max-h-16 w-full object-contain grayscale transition-[filter] duration-200 group-hover:grayscale-0"
                 loading="lazy"
               />
             </li>
@@ -64,7 +61,9 @@ const categories = productCategories.map((category) => ({
         }
       </ul>
 
-      <p class="mt-8 font-mono text-xs uppercase tracking-[0.08em] text-muted">{t.products.note}</p>
+      <p class="mt-8 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">
+        {copy.products.note}
+      </p>
     </section>
 
     <section
@@ -73,20 +72,20 @@ const categories = productCategories.map((category) => ({
       class="mt-16 border-t-2 border-ink pt-12 sm:mt-20 sm:pt-16"
     >
       <div class="mb-10 flex flex-wrap items-end justify-between gap-6 sm:mb-12">
-        <div>
+        <div class="reveal" data-reveal>
           <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-            {t.catalog.overline}
+            {copy.catalog.overline}
           </p>
-          <h2 id="parts-title" class="mt-3 font-display text-4xl uppercase tracking-[-0.02em] sm:text-5xl">
-            {t.catalog.title}
+          <h2 id="parts-title" class="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] uppercase leading-none tracking-[-0.03em]">
+            {copy.catalog.title}
           </h2>
         </div>
         <p class="max-w-md border-l-4 border-accent pl-4 text-sm leading-[1.7] text-muted">
-          {t.catalog.lead}
+          {copy.catalog.lead}
         </p>
       </div>
 
-      <nav aria-label={t.catalog.title} class="flex flex-wrap gap-2">
+      <nav aria-label={copy.catalog.title} class="flex flex-wrap gap-2">
         {
           categories.map((category, index) => (
             <a
@@ -94,11 +93,13 @@ const categories = productCategories.map((category) => ({
               data-category-tab={category.id}
               aria-current={index === 0 ? 'location' : undefined}
               class:list={[
-                'border-2 bg-paper px-4 py-2 font-mono text-xs font-bold uppercase no-underline transition-colors hover:border-ink',
-                index === 0 ? 'border-accent text-accent' : 'border-line',
+                'border-2 bg-paper px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.08em] no-underline transition-colors',
+                index === 0
+                  ? 'border-ink bg-ink text-paper'
+                  : 'border-line text-ink hover:border-ink',
               ]}
             >
-              {String(index + 1).padStart(2, '0')} / {categoryCopy[category.id].title}
+              {number(index + 1)} / {categoryCopy[category.id].title}
             </a>
           ))
         }
@@ -117,22 +118,32 @@ const categories = productCategories.map((category) => ({
             >
               <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <h3 class="font-display text-2xl uppercase tracking-[-0.02em] sm:text-3xl">
-                    {categoryCopy[category.id].title}
-                  </h3>
+                  <div class="flex items-baseline gap-4">
+                    <span class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+                      {number(index + 1)}
+                    </span>
+                    <h3 class="font-display text-2xl uppercase tracking-[-0.02em] sm:text-3xl">
+                      {categoryCopy[category.id].title}
+                    </h3>
+                  </div>
                   <p class="mt-2 max-w-xl text-sm leading-[1.7] text-muted">
                     {categoryCopy[category.id].description}
                   </p>
                 </div>
                 <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
-                  {category.images.length} {t.catalog.items}
+                  {category.images.length} {copy.catalog.items}
                 </span>
               </div>
 
               <ul class="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
                 {
                   category.images.map((image, imageIndex) => (
-                    <li class="border-2 border-line bg-paper p-2 transition-colors hover:border-accent sm:p-3">
+                    <li
+                      class:list={[
+                        'border-2 border-line bg-paper p-2 transition-colors hover:border-ink sm:p-3',
+                        imageIndex % 7 === 0 && 'lg:col-span-2',
+                      ]}
+                    >
                       <img
                         src={image}
                         alt={`${categoryCopy[category.id].title} ${imageIndex + 1}`}
@@ -148,7 +159,7 @@ const categories = productCategories.map((category) => ({
                 category.related.length > 0 && (
                   <div class="mt-6 border-t border-dashed border-line pt-4">
                     <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
-                      {t.catalog.relatedBrands}
+                      {copy.catalog.relatedBrands}
                     </p>
                     <ul class="mt-3 flex flex-wrap gap-3">
                       {
@@ -171,8 +182,6 @@ const categories = productCategories.map((category) => ({
           ))
         }
       </div>
-
-      <!-- <p class="mt-10 font-mono text-xs uppercase tracking-[0.08em] text-muted">{t.catalog.note}</p> -->
     </section>
   </div>
 </section>
@@ -189,9 +198,11 @@ const categories = productCategories.map((category) => ({
     const setActive = (id: string) => {
       for (const tab of tabs) {
         const isActive = tab.dataset.categoryTab === id;
-        tab.classList.toggle('border-accent', isActive);
+        tab.classList.toggle('border-ink', isActive);
+        tab.classList.toggle('bg-ink', isActive);
+        tab.classList.toggle('text-paper', isActive);
         tab.classList.toggle('border-line', !isActive);
-        tab.classList.toggle('text-accent', isActive);
+        tab.classList.toggle('text-ink', !isActive);
         if (isActive) tab.setAttribute('aria-current', 'location');
         else tab.removeAttribute('aria-current');
       }
