@@ -4,13 +4,13 @@ import { clients } from '../data/site';
 ---
 
 <section id="clients" class="border-b-2 border-ink bg-paper">
-  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-    <div class="grid gap-8 lg:grid-cols-[0.3fr_0.7fr] lg:gap-16">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+    <div class="grid gap-6 sm:gap-8 lg:grid-cols-[0.3fr_0.7fr] lg:gap-16">
       <div class="reveal" data-reveal>
         <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
           {copy.clients.overline}
         </p>
-        <span class="mt-6 block font-display text-[clamp(5rem,14vw,10rem)] leading-[0.8] text-line" aria-hidden="true">
+        <span class="mt-6 hidden font-display text-[clamp(5rem,14vw,10rem)] leading-[0.8] text-line sm:block" aria-hidden="true">
           03
         </span>
       </div>
@@ -24,10 +24,10 @@ import { clients } from '../data/site';
       </div>
     </div>
 
-    <ol class="mt-14 grid gap-x-12 sm:grid-cols-2" data-reveal>
+    <ol class="mt-10 grid gap-x-12 sm:mt-14 sm:grid-cols-2" data-reveal>
       {
         clients.map((client, index) => (
-          <li class="group flex items-baseline gap-4 border-b-2 border-line py-4 transition-colors hover:border-ink hover:bg-ink hover:text-paper">
+          <li class="group flex items-baseline gap-4 border-b-2 border-line py-3 transition-colors hover:border-ink hover:bg-ink hover:text-paper sm:py-4">
             <span class="font-mono text-[11px] text-muted group-hover:text-paper/60">
               {String(index + 1).padStart(2, '0')}
             </span>

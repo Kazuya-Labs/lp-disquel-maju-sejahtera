@@ -7,6 +7,8 @@ export const copy = {
   nav: {
     label: "Main navigation",
     cta: "Talk to sales",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
     about: "About",
     products: "Products",
     clients: "Clients",

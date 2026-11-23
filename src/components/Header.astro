@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { copy } from '../data/copy';
 import { site } from '../data/site';
 
@@ -10,16 +11,16 @@ const links = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b-2 border-ink bg-paper">
-  <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center gap-3 no-underline">
-      <img src={site.logo} alt="" class="h-11 w-auto" />
-      <span class="font-display text-sm uppercase leading-none tracking-tight sm:text-base">
+<header class="sticky top-0 z-50 border-b-2 border-ink bg-paper" data-site-header>
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+    <a href="/" class="flex items-center gap-2 no-underline sm:gap-3">
+      <img src={site.logo} alt="" class="h-9 w-auto sm:h-11" />
+      <span class="font-display text-xs uppercase leading-none tracking-tight sm:text-base">
         Dysquel<br />Maju Sejahtera
       </span>
     </a>
 
-    <nav aria-label={copy.nav.label} class="order-3 w-full overflow-x-auto md:order-none md:w-auto">
+    <nav aria-label={copy.nav.label} class="hidden md:block">
       <ul class="flex items-center gap-6 whitespace-nowrap text-xs font-bold uppercase tracking-[0.12em]">
         {
           links.map((link, index) => (
@@ -39,11 +40,132 @@ const links = [
       </ul>
     </nav>
 
-    <a
-      href="#contact"
-      class="hidden border-2 border-ink bg-paper px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.08em] no-underline transition-colors hover:border-accent hover:bg-accent hover:text-paper lg:inline-block"
-    >
-      {copy.nav.cta} ↗
-    </a>
+    <div class="flex items-center gap-2">
+      <a
+        href="#contact"
+        class="hidden min-h-11 items-center gap-2 border-2 border-ink bg-paper px-4 font-mono text-[11px] font-bold uppercase tracking-[0.08em] no-underline transition-colors hover:border-accent hover:bg-accent hover:text-paper lg:inline-flex"
+      >
+        {copy.nav.cta}
+        <Icon name="lucide:arrow-up-right" size={14} aria-hidden="true" />
+      </a>
+
+      <button
+        type="button"
+        data-menu-toggle
+        data-open-label={copy.nav.openMenu}
+        data-close-label={copy.nav.closeMenu}
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label={copy.nav.openMenu}
+        class="inline-flex h-11 w-11 items-center justify-center border-2 border-ink bg-paper transition-colors hover:bg-ink hover:text-paper md:hidden"
+      >
+        <Icon name="lucide:menu" size={22} data-menu-icon="menu" aria-hidden="true" />
+        <Icon name="lucide:x" size={22} data-menu-icon="close" class="hidden" aria-hidden="true" />
+      </button>
+    </div>
   </div>
+
+  <nav
+    id="mobile-menu"
+    aria-label={copy.nav.label}
+    class="hidden border-t-2 border-ink bg-paper md:hidden"
+    data-menu-panel
+  >
+    <ul class="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
+      {
+        links.map((link, index) => (
+          <li>
+            <a
+              href={link.href}
+              data-menu-link
+              class="group flex min-h-14 items-center gap-4 border-b-2 border-line py-3 no-underline transition-colors hover:bg-ink hover:text-paper"
+            >
+              <span class="font-mono text-[11px] text-muted group-hover:text-paper/60">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="font-display text-xl uppercase">{link.label}</span>
+              <Icon
+                name="lucide:arrow-up-right"
+                size={18}
+                class="ml-auto group-hover:text-accent"
+                aria-hidden="true"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mx-auto max-w-7xl px-4 pb-6 pt-4 sm:px-6 lg:px-8">
+      <a
+        href="#contact"
+        data-menu-link
+        class="flex min-h-12 items-center justify-between border-2 border-ink bg-ink px-5 text-sm font-bold uppercase tracking-[0.06em] text-paper no-underline transition-colors hover:border-accent hover:bg-accent"
+      >
+        {copy.nav.cta}
+        <Icon name="lucide:arrow-up-right" size={18} aria-hidden="true" />
+      </a>
+    </div>
+  </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+
+  if (toggle && panel && header) {
+    const menuIcon = toggle.querySelector<SVGElement>('[data-menu-icon="menu"]');
+    const closeIcon = toggle.querySelector<SVGElement>('[data-menu-icon="close"]');
+    const links = Array.from(
+      panel.querySelectorAll<HTMLAnchorElement>('[data-menu-link]'),
+    );
+    const desktop = window.matchMedia('(min-width: 768px)');
+
+    const setOpen = (open: boolean) => {
+      panel.classList.toggle('hidden', !open);
+      menuIcon?.classList.toggle('hidden', open);
+      closeIcon?.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute(
+        'aria-label',
+        open ? (toggle.dataset.closeLabel ?? '') : (toggle.dataset.openLabel ?? ''),
+      );
+      document.body.classList.toggle('menu-open', open);
+      if (open) links[0]?.focus();
+    };
+
+    const close = (returnFocus = false) => {
+      if (panel.classList.contains('hidden')) return;
+      setOpen(false);
+      if (returnFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => {
+      const willOpen = panel.classList.contains('hidden');
+      setOpen(willOpen);
+      if (!willOpen) toggle.focus();
+    });
+
+    for (const link of links) link.addEventListener('click', () => close());
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close(true);
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (
+        !panel.classList.contains('hidden') &&
+        target instanceof Node &&
+        !header.contains(target)
+      ) {
+        close();
+      }
+    });
+
+    desktop.addEventListener('change', (event) => {
+      if (event.matches) close();
+    });
+  }
+</script>

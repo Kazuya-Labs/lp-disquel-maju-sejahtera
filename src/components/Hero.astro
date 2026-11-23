@@ -6,8 +6,8 @@ const tickerNames = brands.map((brand) => brand.name);
 ---
 
 <section id="top" class="border-b-2 border-ink bg-paper">
-  <div class="mx-auto max-w-7xl px-4 pt-10 pb-16 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24">
-    <div class="flex flex-wrap items-center justify-between gap-3 border-y-2 border-ink py-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em]">
+  <div class="mx-auto max-w-7xl px-4 pt-8 pb-12 sm:px-6 sm:pt-10 sm:pb-16 lg:px-8 lg:pt-16 lg:pb-24">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-y-2 border-ink py-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em] sm:gap-3">
       <span class="flex items-center gap-3">
         <span class="inline-block h-[3px] w-10 bg-accent" aria-hidden="true"></span>
         {copy.hero.overline}
@@ -16,7 +16,7 @@ const tickerNames = brands.map((brand) => brand.name);
       <span class="text-muted">Jakarta · ID</span>
     </div>
 
-    <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-0">
+    <div class="grid items-start gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-0">
       <div class="relative z-10 lg:pr-10 lg:pt-14">
         <p class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
           {copy.hero.eyebrow}
@@ -28,7 +28,7 @@ const tickerNames = brands.map((brand) => brand.name);
           <span class="block">{copy.hero.titleBottom}<span class="text-accent">.</span></span>
         </h1>
 
-        <p class="mt-8 max-w-xl border-l-4 border-ink pl-5 text-base leading-[1.7] text-muted sm:text-lg">
+        <p class="mt-6 max-w-xl border-l-4 border-ink pl-5 text-base leading-[1.7] text-muted sm:mt-8 sm:text-lg">
           {copy.hero.lead}
         </p>
 
@@ -47,7 +47,7 @@ const tickerNames = brands.map((brand) => brand.name);
           </a>
         </div>
 
-        <p class="mt-8 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+        <p class="mt-6 font-mono text-[11px] uppercase tracking-[0.12em] text-muted sm:mt-8">
           {copy.hero.note}
         </p>
       </div>
@@ -56,7 +56,7 @@ const tickerNames = brands.map((brand) => brand.name);
         <img
           src={site.heroImage}
           alt="Dysquel industrial supply"
-          class="aspect-[4/5] w-full object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 lg:aspect-[3/4]"
+          class="aspect-[4/3] w-full object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 sm:aspect-[4/5] lg:aspect-[3/4]"
           loading="eager"
         />
         <figcaption class="flex flex-wrap items-center justify-between gap-3 border-t-2 border-ink bg-ink px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-paper">

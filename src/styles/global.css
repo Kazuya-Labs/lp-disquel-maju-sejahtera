@@ -40,6 +40,16 @@
   }
 
   section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  section[id] {
     scroll-margin-top: 6rem;
   }
 }
