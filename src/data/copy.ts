@@ -20,8 +20,7 @@ export const copy = {
     titleTop: "We keep",
     titleMiddle: "industry",
     titleBottom: "moving",
-    lead:
-      "Electrical and mechanical supply for the plants, factories, and people who keep Indonesia running. One call for the parts, the brands, and the answers.",
+    lead: "Electrical and mechanical supply for the plants, factories, and people who keep Indonesia running. One call for the parts, the brands, and the answers.",
     primary: "Explore supply",
     secondary: "Talk to sales",
     note: "Registered in Indonesia since 2013",
@@ -33,12 +32,13 @@ export const copy = {
     title: "The supply behind the line.",
     quote:
       "We don't just source parts. We get them to the people who need them, fast.",
-    lead:
-      "We are a general trading company and supplier of electrical and mechanical goods for both industrial and consumer needs. Founded in 2011, registered in Indonesia in 2013, and still answering the phone when a line goes down.",
+    lead: "We are a general trading company and supplier of electrical and mechanical goods for both industrial and consumer needs. Founded in 2011, registered in Indonesia in 2013, and still answering the phone when a line goes down.",
     visionLabel: "Vision",
-    vision: "To be the supplier that keeps moving forward — and keeps customers satisfied.",
+    vision:
+      "To be the supplier that keeps moving forward — and keeps customers satisfied.",
     missionLabel: "Mission",
-    mission: "Optimum service, backed by a real commitment to customer requirements.",
+    mission:
+      "Optimum service, backed by a real commitment to customer requirements.",
     suppliesLabel: "Two halves, one supply",
     electrical: "Electrical",
     mechanical: "Mechanical",
@@ -47,40 +47,44 @@ export const copy = {
   products: {
     overline: "02 / Brands",
     title: "Names on the box.",
-    lead:
-      "The brands we supply are the ones already trusted on shop floors across the country. No guesswork.",
+    lead: "The brands we supply are the ones already trusted on shop floors across the country. No guesswork.",
     note: "Need a brand that isn't listed? Ask us. We source it.",
   },
   catalog: {
     overline: "The catalog",
     title: "What we supply.",
-    lead:
-      "Four categories, thousands of moving parts. Pick a line to see what we keep on hand.",
+    lead: "Four categories, thousands of moving parts. Pick a line to see what we keep on hand.",
     note: "Product photos sourced from the official PT. Dysquel Maju Sejahtera catalog.",
     items: "items",
     relatedBrands: "Related brands",
     powerSupply: {
       title: "Power Supply",
-      description: "Power supply units and modules for industrial requirements.",
+      description:
+        "Power supply units and modules for industrial requirements.",
     },
     industrialParts: {
       title: "Industrial Parts",
-      description: "Industrial components including encoders and mechanical parts.",
+      description:
+        "Industrial components including encoders and mechanical parts.",
     },
     pneumatic: {
       title: "Pneumatic",
-      description: "Pneumatic components and systems for industrial automation.",
+      description:
+        "Pneumatic components and systems for industrial automation.",
     },
     igbtModule: {
       title: "IGBT Module",
       description: "Semiconductor power modules for industrial applications.",
     },
+    fanColler: {
+      title: "Fan Coller",
+      description: "Fan Coller units and modules for industrial requirements.",
+    },
   },
   clients: {
     overline: "03 / Clients",
     title: "On the floor, every day.",
-    lead:
-      "From textile plants to hotels, our customers span industries across Indonesia. Some have been with us since the beginning.",
+    lead: "From textile plants to hotels, our customers span industries across Indonesia. Some have been with us since the beginning.",
     featured: "Featured",
     tabs: {
       textile: "Textile",
@@ -95,8 +99,7 @@ export const copy = {
   contact: {
     overline: "04 / Contact",
     title: "Let's talk parts.",
-    lead:
-      "Tell us what you need. We'll come back with pricing and availability — usually the same day.",
+    lead: "Tell us what you need. We'll come back with pricing and availability — usually the same day.",
     addressLabel: "Find us",
     emailLabel: "Email",
     phoneLabel: "Phone",

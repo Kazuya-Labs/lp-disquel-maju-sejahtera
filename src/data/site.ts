@@ -87,6 +87,9 @@ export const brands = [
   },
   { name: "ckd", image: "/images/products/pneumatic/pneumatic-07.jpg" },
   { name: "smc", image: "/images/products/pneumatic/pneumatic-08.png" },
+  { name: "delta-fan", image: "/images/brand/delta-fan.webp" },
+  { name: "ebm-papst", image: "/images/brand/ebm-papst.webp" },
+  { name: "sanyodenki", image: "/images/brand/sanyodenki.webp" },
 ];
 
 export const sales = [
@@ -198,7 +201,8 @@ export type ProductCategoryId =
   | "power-supply"
   | "industrial-parts"
   | "pneumatic"
-  | "igbt-module";
+  | "igbt-module"
+  | "fan-coller";
 
 export type ProductCategory = {
   id: ProductCategoryId;
@@ -266,6 +270,20 @@ export const productCategories: ProductCategory[] = [
       "ckd",
       "smc",
     ],
+  },
+  {
+    id: "fan-coller",
+    images: [
+      "/images/products/fan-coler/fan-coler-01.jpeg",
+      "/images/products/fan-coler/fan-coler-02.jpeg",
+      "/images/products/fan-coler/fan-coler-03.jpeg",
+      "/images/products/fan-coler/fan-coler-04.jpeg",
+      "/images/products/fan-coler/fan-coler-05.jpeg",
+      "/images/products/fan-coler/fan-coler-06.jpeg",
+      "/images/products/fan-coler/fan-coler-07.jpeg",
+      "/images/products/fan-coler/fan-coler-08.jpeg",
+    ],
+    relatedBrands: ["sanyodenki", "ebm-papst", "delta-fan"],
   },
   {
     id: "igbt-module",
