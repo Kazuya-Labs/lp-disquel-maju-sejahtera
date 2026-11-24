@@ -1,7 +1,6 @@
 export const site = {
   siteUrl: "https://disquel-maju-sejahtera.vercel.app",
   logo: "/images/logo.png",
-  heroImage: "/images/hero.jpg",
   aboutImages: [
     "/images/about/1.jpg",
     "/images/about/2.jpg",
@@ -92,8 +91,6 @@ export const brands = [
 
 export const sales = [
   { name: "Lestari", phone: "081318410918", wa: "6281318410918" },
-  { name: "Desy", phone: "089690645168", wa: "6289690645168" },
-  { name: "Sandro Ginting", phone: "087748450114", wa: "6287748450114" },
   { name: "Franky", phone: "081380932632", wa: "6281380932632" },
 ];
 

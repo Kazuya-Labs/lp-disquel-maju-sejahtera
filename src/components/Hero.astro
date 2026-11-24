@@ -1,4 +1,7 @@
 ---
+
+import HeroImage from "../assets/hero.jpg";
+import { Image } from 'astro:assets';
 import { copy } from '../data/copy';
 import { brands, site } from '../data/site';
 
@@ -53,11 +56,10 @@ const tickerNames = brands.map((brand) => brand.name);
       </div>
 
       <figure class="relative z-0 border-2 border-ink bg-ink lg:-ml-12 lg:mt-28">
-        <img
-          src={site.heroImage}
+        <Image
+          src={HeroImage}
           alt="Dysquel industrial supply"
           class="aspect-[4/3] w-full object-cover grayscale transition-[filter] duration-200 hover:grayscale-0 sm:aspect-[4/5] lg:aspect-[3/4]"
-          loading="eager"
         />
         <figcaption class="flex flex-wrap items-center justify-between gap-3 border-t-2 border-ink bg-ink px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-paper">
           <span>{copy.hero.caption}</span>
